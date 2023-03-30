@@ -1,0 +1,20 @@
+{
+  "name": "y",
+  "version": "y",
+  "main": "y",
+  "license": "y",
+  "description": "y",
+  "repository": "y",
+  "author": "y",
+  "private": true,
+  "devDependencies": {
+    "vuepress": "^1.9.9"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
+  },
+  "dependencies": {
+    "vuepress-theme-reco": "^1.6.17"
+  }
+}
