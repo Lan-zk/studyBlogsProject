@@ -8,6 +8,7 @@
   "author": "y",
   "private": true,
   "devDependencies": {
+    "@vuepress-reco/vuepress-plugin-bulletin-popover": "^1.6.16",
     "vuepress": "^1.9.9"
   },
   "scripts": {
@@ -15,6 +16,8 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
+    "@vuepress-reco/vuepress-plugin-kan-ban-niang": "^1.0.5",
+    "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-theme-reco": "^1.6.17"
   }
 }

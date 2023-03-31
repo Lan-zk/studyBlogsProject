@@ -214,6 +214,20 @@
    }  
    ```
 
+3. 将文档左边侧边栏中的多级标题移出，展示在右边侧边栏中
+
+   ```js
+   module.exports = {
+       ...
+       themeConfig: { // 为当前的主题提供一些配置，这些选项依赖于你正在使用的主题。
+           ...
+           subSidebar: 'auto', // 在右边生成子侧边栏，用于展示当前文档的子级结构
+           ...
+       }
+       ...
+   }
+   ```
+
 ## 7. 部署到GitHub
 
 1. 新建一个GitHub仓库
@@ -254,4 +268,169 @@
    cd -
    ```
 
-   
+
+## 8. 优化
+
+[参考文档：搭建 VuePress 博客，你可能会用到的一些插件](https://github.com/mqyqingfeng/Blog/issues/261)
+
+### 1. 右下角添加修改时间
+
+[官方文档](https://vuepress.vuejs.org/zh/theme/default-theme-config.html#%E6%9C%80%E5%90%8E%E6%9B%B4%E6%96%B0%E6%97%B6%E9%97%B4)
+
+[参考文档: 冴羽](https://github.com/mqyqingfeng/Blog/issues/244)
+
+* 在`config.js` 中新增 `lastUpdated`
+
+  ```js
+  module.exports = {
+      ...
+      themeConfig: { // 为当前的主题提供一些配置，这些选项依赖于你正在使用的主题。
+          ...
+          lastUpdated: '上次更新', // 在文章右下角展示文档更新时间，基于git commit 的时间
+          ...
+      }
+  }
+  ```
+
+  ![image-20230331142500380](https://raw.githubusercontent.com/Lan-zk/lzkImageHost/master/img/202303311425569.png)
+
+### 2. 公告栏弹窗
+
+[插件地址](https://vuepress-theme-reco.recoluan.com/views/plugins/bulletinPopover.html)
+
+* 安装：
+
+  ```shell
+  yarn add @vuepress-reco/vuepress-plugin-bulletin-popover -D
+  ```
+
+* 在`config.js` 中添加`plugins`
+
+  ```js
+  module.exports = {
+      ...
+      themeConfig: { // 为当前的主题提供一些配置，这些选项依赖于你正在使用的主题。
+          ...
+      },
+      plugins: [ // 插件引入
+          ['@vuepress-reco/vuepress-plugin-bulletin-popover', {
+            width: '300px', // 默认 260px
+            title: '消息提示',
+            body: [
+              {
+                type: 'title',
+                content: '消息弹窗',
+                style: 'text-aligin: center;'
+              },
+            ],
+            footer: [
+              {
+                type: 'button',
+                text: '确认',
+                link: '/'
+              } 
+            ]
+          }],
+      ],
+  }
+  ```
+
+​		![image-20230331152729457](https://raw.githubusercontent.com/Lan-zk/lzkImageHost/master/img/202303311527554.png)
+
+### 3. 代码复制
+
+[插件地址: vuepress-plugin-code-copy ](https://github.com/znicholasbrown/vuepress-plugin-code-copy)
+
+* 安装：
+
+  ```shell
+  npm install vuepress-plugin-code-copy
+  # OR
+  yarn add vuepress-plugin-code-copy
+  ```
+
+* 修改`config.js`
+
+  ```js
+  module.exports = {
+      ...
+      themeConfig: { // 为当前的主题提供一些配置，这些选项依赖于你正在使用的主题。
+          ...
+      },
+      plugins: [ // 插件引入
+         ["vuepress-plugin-code-copy", {
+              // selector: String, // 复制按钮的css选择器
+              align: 'top', // 垂直位置
+              color: '#7a7a7c', // 按钮颜色
+              backgroundTransition: true, // 点击按钮是否更换背景色
+              backgroundColor: '#0075b8', // 背景色
+              successText: '已复制', // 按下复制按钮之后显示的文本
+              staticIcon: true, // 一直显示复制按钮
+           }]
+      ],
+  }
+  ```
+
+  ![image-20230331153221488](https://raw.githubusercontent.com/Lan-zk/lzkImageHost/master/img/202303311532540.png)
+
+### 4. 看板娘
+
+[插件地址：vuepress-theme-reco](https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html)
+
+* 安装
+
+  ```shell
+  yarn add @vuepress-reco/vuepress-plugin-kan-ban-niang
+  ```
+
+* 修改`config.js` 
+
+  ```js
+  module.exports = {
+      ...
+      themeConfig: { // 为当前的主题提供一些配置，这些选项依赖于你正在使用的主题。
+          ...
+      },
+      plugins: [ // 插件引入
+         [
+              '@vuepress-reco/vuepress-plugin-kan-ban-niang',
+              {
+                  theme: [
+                      'blackCat', 'whiteCat', 'haru1',
+                      'haru2', 'haruto', 'koharu',
+                      'izumi', 'shizuku', 'wanko',
+                      'miku', 'z16'
+                      ], // 主题
+                  clean: false, // 是否隐藏所有按钮
+                  messages: {
+                      // 按钮提示语
+                      welcome: '欢迎来到 林的博客',
+                      home: '首页',
+                      theme: '好吧，希望你能喜欢我的其他小伙伴。',
+                      close: '你知道我喜欢吃什么吗？痴痴地望着你。'
+                  },
+                  messagesStyle: {
+                      // 自定义消息框样式
+                      right: '68px',
+                      bottom: '190px'
+                  },
+                  modelStyle: {
+                      // 自定义模型样式
+                      right: '90px',
+                      bottom: '-20px',
+                      opacity: '0.9'
+                  },
+                  btnStyle: {
+                      // 自定义按钮样式
+                      right: '90px',
+                      bottom: '40px'
+                  },
+                  width: 150, // 模型宽度
+                  height: 220, // 模型高度
+              }
+            ]
+      ],
+  }
+  ```
+
+  ![image-20230331160253523](https://raw.githubusercontent.com/Lan-zk/lzkImageHost/master/img/202303311602582.png)
