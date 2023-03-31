@@ -220,7 +220,17 @@
 
    ![image-20230330224946759](https://raw.githubusercontent.com/Lan-zk/lzkImageHost/master/img/image-20230330224946759.png)
 
-2. 创建脚本文件 修改对应的`用户名` 和`仓库名` 
+2. 修改`config.js` 添加`base` 路径
+
+   ```js
+   module.exports = {
+       ...
+       base: '/studyBlogs/', // 修改为自己的仓库名
+       ...
+   }
+   ```
+
+3. 创建脚本文件 修改对应的`用户名` 和`仓库名` 
 
    ```shell
    #!/usr/bin/env sh

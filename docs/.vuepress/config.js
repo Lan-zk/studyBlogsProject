@@ -10,6 +10,7 @@ module.exports = {
     },
     themeConfig: { // 为当前的主题提供一些配置，这些选项依赖于你正在使用的主题。
         nav: [
+            // 导航栏配置
             { text: '首页', link: '/' },
             { 
                 text: '林 的个人博客', 
@@ -21,6 +22,7 @@ module.exports = {
             }
         ],
         sidebar: [
+            // 侧边栏配置
             {
                 title: '首页',
                 path: '/',
